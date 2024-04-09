@@ -1,24 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "../pages/layoutPage";
-import Login from "../pages/loginPage";
-import Welcome from "../pages/welcomePage";
-import LinkContesta from "../pages/linkContesta";
-import Home from "../pages/homePage";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import { useCustomRouter } from "../pages/loginPage/useLoginRouter";
+import { useCustomRouter2 } from "../pages/layoutPage/useLayoutRouter";
 
-const AppRouter: React.FC = () => {
+export const MyRoutes = () => {
+  const CustomRouter = useCustomRouter();
+  const CustomRouter2 = useCustomRouter2();
+
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="home" element={<Home />} />
-          <Route path="welcome" element={<Welcome />} />
-          <Route path="login" element={<Login />} />
-          <Route path="contesta" element={<LinkContesta/>}/>
-        </Route>
+        {CustomRouter}
+        {CustomRouter2}
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
-
-export default AppRouter;

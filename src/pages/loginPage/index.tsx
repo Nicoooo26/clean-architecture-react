@@ -1,18 +1,16 @@
-import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-
   return (
     <div className="modal">
       <div className="modal-content">
         <h2>Login</h2>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
         <button>Login</button>
-        <button>Close</button> {/* Botón para cerrar el modal */}
+        <Link to="/home">
+          <button>Close</button>
+        </Link>
       </div>
     </div>
   );
