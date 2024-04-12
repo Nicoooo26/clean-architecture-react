@@ -1,8 +1,15 @@
 import React from "react";
-import { MyRoutes } from "./router";
+import AppRouter from "./router";
+import { routes } from "./router/test/pruebaRutas/home";
+import Application from "./application/service/application";
 
 function App() {
-  return <MyRoutes />;
+
+  return (
+  <div className="App">
+    <AppRouter routes={routes}/>
+  </div>
+  )
 }
 
 export default App;

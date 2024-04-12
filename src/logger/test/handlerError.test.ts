@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import { ErrorHandler } from "../../onHandlerError/onHandlerError";
 
 

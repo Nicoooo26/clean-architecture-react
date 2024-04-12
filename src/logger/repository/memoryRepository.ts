@@ -1,4 +1,4 @@
-import RepositoryInterface from "../service/repository/interface";
+import RepositoryInterface from "../service/repository/log";
 
 class MemoryRepostory implements RepositoryInterface {
     private stack: Array<String> = [];

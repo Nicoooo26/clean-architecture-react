@@ -1,19 +1,18 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Routes } from "react-router-dom";
-import { useCustomRouter } from "../pages/loginPage/useLoginRouter";
-import { useCustomRouter2 } from "../pages/layoutPage/useLayoutRouter";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RouteItem from './RouteItemInterface';
+import Application from '../application/service/application';
 
-export const MyRoutes = () => {
-  const CustomRouter = useCustomRouter();
-  const CustomRouter2 = useCustomRouter2();
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        {CustomRouter}
-        {CustomRouter2}
-      </Routes>
-    </BrowserRouter>
-  );
+const AppRouter: React.FC<{ routes: RouteItem[] }> = ({ routes }) => {
+    return (
+        <Routes>
+            <>
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.builder()} />
+                ))}
+            </>
+        </Routes>
+    );
 };
+export default AppRouter;

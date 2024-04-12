@@ -1,8 +1,20 @@
-import LogLevel from "./levelLog";
-import RepositoryInterface from "./repository/interface";
-import LoggerTypeInterface from "./interface";
+// Dominio
+import LogLevel from '../entity/log';
 
-abstract class AbstractLogger implements LoggerTypeInterface {
+// Firma del repositorio
+import RepositoryInterface from './repository/log';
+
+// Firma del logger
+export interface LoggerInterface {
+    error(str: string): void;
+    log(str: string): void;
+    trace(str: string): void;
+    warning(str: string): void;
+    debug(str: string): void;
+}
+
+// Lógica abstracta
+export abstract class AbstractLogger implements LoggerInterface {
 
   private repository: RepositoryInterface;
 
@@ -23,4 +35,8 @@ abstract class AbstractLogger implements LoggerTypeInterface {
   debug = (a: String) => this.repository.save(this._format(LogLevel.Debug, a))
 
 }
-export default AbstractLogger
+
+// Implementación
+class Logger extends AbstractLogger {}
+
+export default Logger;
