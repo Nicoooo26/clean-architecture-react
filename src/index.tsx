@@ -1,22 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+//import './index.css';
+import ApplicationRouter from './router/service/router';
+import ErrorHandler from './error/ErrorHandler';
+import Application from './application/service/application';
+import ApplicationNavigator from './router/service/navigator';
+import { home } from './pages/home';
+import { prueba } from './pages/prueba';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+//console.log(path.join('a'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Preparamos el manejador de errores de la aplicación
+const handler = new ErrorHandler();
+// Preparamos el enrutador
+const router = new ApplicationRouter();
+// Preparamos el navegador
+const navigator = new ApplicationNavigator();
+
+const app = Application.create(handler, router, navigator);
+
+
+
+home();
+
+prueba();
+
+app.render();
